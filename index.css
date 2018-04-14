@@ -1,0 +1,99 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: min-content auto;
+    grid-template-columns: auto;
+}
+
+.game-menu {
+    background-color: rgb(121, 173, 138);
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.game-menu__item {
+    margin: 5px;
+}
+
+.game-menu__button {
+    border: none;
+    background-color: rgb(155, 212, 174);
+    font-size: inherit;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px;
+
+    padding: 10px;
+    width: 150px;
+}
+
+.game-menu__button:enabled:active {
+    box-shadow: 2px 2px 2px;
+
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.game-menu-items-container {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+
+    margin: 5px;
+    height: 100%;
+
+    display: grid;
+    /* justify-content: center; */
+    justify-items: start;
+    align-items: center;
+}
+
+.game-controls-container {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+}
+
+.game-parameters-container {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+}
+
+.game-menu__input-item {
+    background-color: rgb(155, 212, 174);
+    border-radius: 5px;
+    border: none;
+
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 80px;
+}
+
+.game-field {
+    background-color: rgb(95, 161, 117);
+
+    position: relative;
+}
+
+.moving {
+    font-size: 1%;
+    text-align: center;
+    
+    overflow: hidden;
+
+    position: absolute;
+}
