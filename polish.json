@@ -1,0 +1,14 @@
+{
+    "html-lang": "pl",
+    "new-game-button": "Nowa gra",
+    "play-pause-button": [
+        "Graj",
+        "Pauza"
+    ],
+    "game-time-label": "Czas gry (sekundy):",
+    "movings-count-label": "Liczba obiektów do utworzenia (1-20):",
+    "movings-dimensions-label": "Wymiary obiektu (piksele):",
+    "vertical-interval-label": "Maksymalne przesunięcie jednostkowe w pionie (piksele):",
+    "horizontal-interval-label": "Maksymalne przesunięcie jednostkowe w poziomie (piksele):",
+    "x-factor-label": "Czynnik X (piksele):"
+}
