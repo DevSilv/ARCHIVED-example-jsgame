@@ -9,8 +9,16 @@ for your convenience i am including below a quote from that site:
 
 also note that i can **add a lincese** in the near future if it would be relevant to the needs of this project.
 
+## installation and usage
+you can play the game (or just see how the site looks and works) simply by opening the `index.html` file in your browser.
+
+## game goal and rules
+the goal of this game is to "click out" (**currently** only with mouse) all the objects moving over the board.
+
+you can read detailed information (e.g. how the game works and about the parameters) in the game github's wiki.
+
 ## technologies used
-there are **currently** following technologies used in this project:
+**currently** the following technologies are used in this project:
 * html 5
 * css 3
 * javascript – ecmascript version: 6
