@@ -19,37 +19,38 @@
                     <br/>
                     <span class="game-time">0</span>
                 </div>
-            </div>
-            <div class="game-menu-items-container game-parameters-container">
-                <div class="game-menu__item">
-                    <span class="movings-count-label">The number of objects to create (1-20):</span>
-                    <br/>
-                    <input type="number" min="1" max="20" value="5" autocomplete="off" class="game-menu__input-item movings-count" />
-                </div>
-                <div class="game-menu-item">
-                    <span class="movings-dimensions-label">Object dimensions (pixels):</span>
-                    <br/>
-                    <input type="number" min="1" max="50" value="15" autocomplete="off" class="game-menu__input-item moving-height" /> &#215;
-                    <input type="number" min="1" max="50" value="15" autocomplete="off" class="game-menu__input-item moving-width" /> &#215;
-                    <input type="number" min="1" max="50" value="15" autocomplete="off" class="game-menu__input-item moving-radius" />
-                </div>
-                <div class="game-menu__item">
-                    <span class="vertical-interval-label">Maximum vertical unit interval (pixels):</span>
-                    <br/>
-                    <input type="number" min="0" value="1" autocomplete="off" class="game-menu__input-item vertical-interval" />
-                </div>
-                <div class="game-menu__item">
-                    <span class="horizontal-interval-label">Maximum horizontal unit interval (pixels):</span>
-                    <br/>
-                    <input type="number" min="0" value="1" autocomplete="off" class="game-menu__input-item horizontal-interval" />
-                </div>
-                <div class="game-menu__item">
-                    <span class="x-factor-label">X factor (pixels):</span>
-                    <br/>
-                    <input type="number" min="0" value="1" autocomplete="off" class="game-menu__input-item x-factor" />
-                </div>
+                <button type="button" class="game-menu__item game-menu__button toggle-parameters-button" autocomplete="off">Parameters</button>
             </div>
         </nav>
+        <div class="game-menu-items-container game-parameters-container">
+            <div class="game-menu__item">
+                <span class="movings-count-label">The number of objects to create (1-20):</span>
+                <br/>
+                <input type="number" min="1" max="20" value="5" autocomplete="off" class="game-menu__input-item movings-count" />
+            </div>
+            <div class="game-menu__item">
+                <span class="movings-dimensions-label">Object dimensions (pixels):</span>
+                <br/>
+                <input type="number" min="1" max="50" value="15" autocomplete="off" class="game-menu__input-item moving-height" /> &#215;
+                <input type="number" min="1" max="50" value="15" autocomplete="off" class="game-menu__input-item moving-width" /> &#215;
+                <input type="number" min="1" max="50" value="15" autocomplete="off" class="game-menu__input-item moving-radius" />
+            </div>
+            <div class="game-menu__item">
+                <span class="vertical-interval-label">Maximum vertical unit interval (pixels):</span>
+                <br/>
+                <input type="number" min="0" value="1" autocomplete="off" class="game-menu__input-item vertical-interval" />
+            </div>
+            <div class="game-menu__item">
+                <span class="horizontal-interval-label">Maximum horizontal unit interval (pixels):</span>
+                <br/>
+                <input type="number" min="0" value="1" autocomplete="off" class="game-menu__input-item horizontal-interval" />
+            </div>
+            <div class="game-menu__item">
+                <span class="x-factor-label">X factor (pixels):</span>
+                <br/>
+                <input type="number" min="0" value="1" autocomplete="off" class="game-menu__input-item x-factor" />
+            </div>
+        </div>
         <div class=" game-field ">
 
         </div>

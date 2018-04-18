@@ -79,17 +79,17 @@ function createMoving(
 }
 
 // Returns "window.setInterval" function.
-//  "gameFieldRef" is "HTMLElement".
-//  "movingsRef" is "array" of "moving" objects.
+//  "gameField" is "HTMLElement".
+//  "movings" is "array" of "moving" objects.
 //  "intervalTime" is "integer" and in miliseconds.
-function game(gameFieldRef, movingsRef, intervalTime) {
+function game(gameField, movingsRef, intervalTime) {
     "use strict";
 
     return window.setInterval(function() {
         ++time;
 
         for (let m of movingsRef) {
-            let gameFieldComputedStyle = window.getComputedStyle(gameFieldRef);
+            let gameFieldComputedStyle = window.getComputedStyle(gameField);
             m.adjustTop(parseInt(gameFieldComputedStyle.height));
             m.adjustLeft(parseInt(gameFieldComputedStyle.width));
         }
@@ -104,17 +104,17 @@ function game(gameFieldRef, movingsRef, intervalTime) {
 }
 
 // Does not return.
-//  "gameFieldRef" is "HTMLElement" and is being changed.
-//  "newGameButtonRef" is "HTMLElement" and is being changed.
-//  "playPauseButtonRef" is "HTMLElement" and is being changed.
-function initGame(gameFieldRef, newGameButtonRef, playPauseButtonRef) {
+//  "gameField" is "HTMLElement" and is being changed.
+//  "newGameButton" is "HTMLElement" and is being changed.
+//  "playPauseButton" is "HTMLElement" and is being changed.
+function initGame(gameField, newGameButton, playPauseButton) {
     "use strict";
 
     // Initialize or re-initialize all the game parameters.
 
     // Using "Array.from" since HTMLElement.children is a NodeList,
     //  which is not "array" and does not work for some reason
-    let gameFieldChildrenArray = Array.from(gameFieldRef.children);
+    let gameFieldChildrenArray = Array.from(gameField.children);
     for (let child of gameFieldChildrenArray) {
         child.remove();
     }
@@ -163,12 +163,12 @@ function initGame(gameFieldRef, newGameButtonRef, playPauseButtonRef) {
 
         let top = Math.floor(
             Math.random() *
-            (parseInt(window.getComputedStyle(gameFieldRef).height) -
+            (parseInt(window.getComputedStyle(gameField).height) -
                 (parseInt(movings[i].element.style.height)))
         );
         let left = Math.floor(
             Math.random() *
-            (parseInt(window.getComputedStyle(gameFieldRef).width) -
+            (parseInt(window.getComputedStyle(gameField).width) -
                 (parseInt(movings[i].element.style.width)))
         );
         movings[i].element.style.top = top + "px";
@@ -181,13 +181,13 @@ function initGame(gameFieldRef, newGameButtonRef, playPauseButtonRef) {
                 for (let m of movings) {
                     m.action();
                 }
-                if (gameFieldRef.children.length === 0) {
+                if (gameField.children.length === 0) {
                     alert("Congratulations, you clicked them all out!");
                     window.clearInterval(setIntervalId);
                     isRunning = false;
-                    playPauseButtonRef.disabled = true;
-                    newGameButtonRef.disabled = false;
-                    playPauseButtonRef.childNodes[0].nodeValue = "Play";
+                    playPauseButton.disabled = true;
+                    newGameButton.disabled = false;
+                    playPauseButton.childNodes[0].nodeValue = "Play";
                     time = 0;
                     document
                         .getElementsByClassName("game-time")[0]
@@ -197,7 +197,7 @@ function initGame(gameFieldRef, newGameButtonRef, playPauseButtonRef) {
             }
         });
 
-        gameFieldRef.appendChild(movings[i].element);
+        gameField.appendChild(movings[i].element);
     }
 
     return movings;
@@ -206,18 +206,20 @@ function initGame(gameFieldRef, newGameButtonRef, playPauseButtonRef) {
 window.addEventListener("load", function() {
     "use strict";
 
-    let gameFieldRef = document.getElementsByClassName("game-field")[0];
-    let newGameButtonRef =
+    let gameField = document.getElementsByClassName("game-field")[0];
+    let newGameButton =
         document.getElementsByClassName("new-game-button")[0];
-    let playPauseButtonRef =
+    let playPauseButton =
         document.getElementsByClassName("play-pause-button")[0];
+    let toggleParametersButton =
+        document.getElementsByClassName("toggle-parameters-button")[0];
     let movings = [];
     let intervalTime = 10; // miliseconds
 
-    newGameButtonRef.addEventListener("click", function() {
-        movings = initGame(gameFieldRef, newGameButtonRef, playPauseButtonRef);
-        playPauseButtonRef.disabled = false;
-        playPauseButtonRef.childNodes[0].nodeValue = "Play";
+    newGameButton.addEventListener("click", function() {
+        movings = initGame(gameField, newGameButton, playPauseButton);
+        playPauseButton.disabled = false;
+        playPauseButton.childNodes[0].nodeValue = "Play";
         time = 0;
         document
             .getElementsByClassName("game-time")[0]
@@ -225,19 +227,42 @@ window.addEventListener("load", function() {
             .nodeValue = time;
     });
 
-    playPauseButtonRef.addEventListener("click", function() {
+    playPauseButton.addEventListener("click", function() {
         if (isRunning === true) {
             // Pause the game.
             isRunning = false;
             window.clearInterval(setIntervalId);
-            playPauseButtonRef.childNodes[0].nodeValue = "Resume";
-            newGameButtonRef.disabled = false;
+            playPauseButton.childNodes[0].nodeValue = "Resume";
+            newGameButton.disabled = false;
+            toggleParametersButton.disabled = false;
         } else {
             // Resume or play the game the first time.
             isRunning = true;
-            setIntervalId = game(gameFieldRef, movings, intervalTime);
-            playPauseButtonRef.childNodes[0].nodeValue = "Pause";
-            newGameButtonRef.disabled = true;
+            setIntervalId = game(gameField, movings, intervalTime);
+            playPauseButton.childNodes[0].nodeValue = "Pause";
+            newGameButton.disabled = true;
+            toggleParametersButton.disabled = true;
         }
     });
+
+    let gameParametersContainer =
+        document.getElementsByClassName("game-parameters-container")[0];
+    let defaultGameParametersContainerDisplay =
+        window.getComputedStyle(gameParametersContainer).display;
+    toggleParametersButton.addEventListener("click", function() {
+        if (gameParametersContainer.style.display === "none") {
+            newGameButton.disabled = true;
+            gameParametersContainer.style.display =
+                defaultGameParametersContainerDisplay;
+        } else {
+            newGameButton.disabled = false;
+            gameParametersContainer.style.display = "none";
+            toggleParametersButtonFirstClicked = false;
+        }
+    });
+    gameParametersContainer.style.display = "none";
 });
+
+document.addEventListener("touchstart", function() {
+
+}, false);

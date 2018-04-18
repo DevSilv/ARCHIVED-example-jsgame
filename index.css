@@ -7,7 +7,6 @@ body {
 }
 
 .game-container {
-    width: 100vw;
     height: 100vh;
 
     display: grid;
@@ -18,11 +17,44 @@ body {
 .game-menu {
     background-color: rgb(121, 173, 138);
 
-    padding: 20px;
+    padding: 5px;
+    height: 120px;
 
-    display: flex;
-    flex-direction: row;
+    /* i cannot use flexbox, because
+    i want the menu to stretch both
+    vertically and horizontally */
+    display: grid;
+    justify-items: center;
+}
+
+@media (min-width: 580px) {
+    /* that is, minimum 280px width + 1*300px */
+    .game-menu {
+        height: 70px;
+    }
+}
+
+.game-menu-items-container {
+    background-color: rgb(121, 173, 138);
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.game-controls-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
     align-items: center;
+    justify-items: center;
+    grid-gap: 10px;
+}
+
+@media (min-width: 580px) {
+    /* that is, minimum 280px width + 1*300px */
+    .game-controls-container {
+        grid-template-columns: repeat(4, auto);
+    }
 }
 
 .game-menu__item {
@@ -36,8 +68,9 @@ body {
     border-radius: 5px;
     box-shadow: 4px 4px 4px;
 
-    padding: 10px;
-    width: 150px;
+    padding: 5px;
+    min-width: 110px;
+    overflow-wrap: break-word;
 }
 
 .game-menu__button:enabled:active {
@@ -48,28 +81,42 @@ body {
     left: 2px;
 }
 
-.game-menu-items-container {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-
-    margin: 5px;
-    height: 100%;
-
-    display: grid;
-    /* justify-content: center; */
-    justify-items: start;
-    align-items: center;
-}
-
-.game-controls-container {
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
+.game-time-label {
+    max-width: 50px;
 }
 
 .game-parameters-container {
+    padding: 5px;
+    /* it is the container width - 2*left - 2*border width - 2*padding */
+    width: calc(100% - 4vw - 2px - 10px);
+    /* it is the container height - top - 2*border - 2vw of the bottom margin */
+    max-height: calc(100% - 130px - 4px - 2vw);
+
+    z-index: 1;
+    position: absolute;
+    /* it is the container (i.e. .game-menu) height + 2*padding */
+    top: calc(120px + 10px);
+    left: 2vw;
+    overflow: auto;
+
+    display: grid;
     grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
+}
+
+@media (min-width: 580px) {
+    /* that is, minimum 280px width + 1*300px */
+    .game-parameters-container {
+        grid-template-columns: repeat(3, auto);
+        top: calc(70px + 10px);
+        max-height: calc(100% - 80px - 2px - 2vw - 10px);
+    }
+}
+
+@media (min-width: 880px) {
+    /* that is, minimum 280px width + 2*300px */
+    .game-parameters-container {
+        grid-template-columns: repeat(4, auto);
+    }
 }
 
 .game-menu__input-item {
@@ -92,7 +139,7 @@ body {
 .moving {
     font-size: 1%;
     text-align: center;
-    
+
     overflow: hidden;
 
     position: absolute;
