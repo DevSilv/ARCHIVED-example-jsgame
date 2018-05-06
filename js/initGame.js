@@ -26,7 +26,7 @@ function initGame(gameField, newGameButton, playPauseButton) {
     // Initialize or re-initialize all the game objects.
 
     let movings = [];
-    
+
     for (let i = 0; i < movingsCount; ++i) {
         let id = i;
         let color = {
@@ -57,18 +57,28 @@ function initGame(gameField, newGameButton, playPauseButton) {
             )
         );
 
-        let top = Math.floor(
-            Math.random() *
-            (parseInt(window.getComputedStyle(gameField).height) -
-                height)
-        );
-        let left = Math.floor(
-            Math.random() *
-            (parseInt(window.getComputedStyle(gameField).width) -
-                width)
-        );
-        movings[i].top = top;
-        movings[i].left = left;
+        // Validate if top and left do not
+        //  overlap each other and the other,
+        //  and then add them to element.
+        let top = 0;
+        let left = 0;
+        do {
+            top = Math.floor(
+                Math.random() *
+                (parseInt(window.getComputedStyle(gameField).height) -
+                    height)
+            );
+            left = Math.floor(
+                Math.random() *
+                (parseInt(window.getComputedStyle(gameField).width) -
+                    width)
+            );
+            movings[i].top = top;
+            movings[i].left = left;
+        } while (movings.find(function(m) {
+                return movings[i].overlaps(m);
+            }));
+
         movings[i].click(function() {
             // Do not remove, when game is paused or not started.
             if (isRunning === true) {
@@ -91,6 +101,8 @@ function initGame(gameField, newGameButton, playPauseButton) {
                 }
             }
         });
+
+        movings[i].element.innerHTML = movings[i].id;
 
         gameField.appendChild(movings[i].element);
     }

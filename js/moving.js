@@ -40,70 +40,80 @@ function createMoving(
     return {
         get "id" () {
             return id;
-        },
+        }, // get
         get "element" () {
             return element;
-        },
+        }, // get
         get "height" () {
-            return element.offsetHeight;
-        },
+            return element.offsetHeight ||
+                parseInt(element.style.height);
+        }, // get
         set "height" (height) {
             element.style.height = height + "px";
-        },
+        }, // set
         get "width" () {
-            return element.offsetWidth;
-        },
+            return element.offsetWidth ||
+                parseInt(element.style.width);
+        }, // get
         set "width" (width) {
             element.style.width = width + "px";
-        },
+        }, // set
         get "top" () {
-            return element.offsetTop;
-        },
+            return element.offsetTop ||
+                parseInt(element.style.top);
+        }, // get
         set "top" (top) {
             element.style.top = top + "px";
-        },
+        }, // set
         get "bottom" () {
-            return element.offsetTop + element.offsetHeight;
-        },
+            return element.offsetTop +
+                element.offsetHeight ||
+                parseInt(element.style.top) +
+                parseInt(element.style.height);
+        }, // get
         get "left" ()  {
-            return element.offsetLeft;
-        },
+            return element.offsetLeft ||
+                parseInt(element.style.left);
+        }, // get
         set "left" (left) {
             element.style.left = left + "px";
-        },
+        }, // set
         get "right" () {
-            return element.offsetLeft + element.offsetWidth;
-        },
+            return element.offsetLeft +
+                element.offsetWidth ||
+                parseInt(element.style.left) +
+                parseInt(element.style.width);
+        }, // get
         // get "y" () {
         //     return this.top + Math.floor(this.height / 2);
-        // },
+        // }, // get
         // get "x" () {
         //     return this.left + Math.floor(this.width / 2);
-        // },
+        // }, // get
         "verticalUnitInterval": verticalUnitInterval,
         "horizontalUnitInterval": horizontalUnitInterval,
         "verticalDirection": verticalDirection,
         "horizontalDirection": horizontalDirection,
         "bounceVertically": function() {
             this.verticalDirection = -this.verticalDirection;
-        },
+        }, // function
         "bounceHorizontally": function() {
             this.horizontalDirection = -this.horizontalDirection;
-        },
+        }, // function
         "moveVertically": function() {
             this.top = this.top + this.verticalDirection;
-        },
+        }, // function
         "moveHorizontally": function() {
             this.left = this.left + this.horizontalDirection;
-        },
+        }, // function
         "isNearVertically": function(moving) {
             return this.top <= moving.bottom &&
                 this.bottom >= moving.top;
-        },
+        }, // function
         "isNearHorizontally": function(moving) {
             return this.left <= moving.right &&
                 this.right >= moving.left;
-        },
+        }, // function
         "getVerticalDistanceBetween": function(moving) {
             let distance = 0;
             if (this.bottom <= moving.top) {
@@ -115,7 +125,7 @@ function createMoving(
                 distance = this.top - moving.bottom;
             } // else "distance" should be 0
             return distance;
-        },
+        }, // function
         "getHorizontalDistanceBetween": function(moving) {
             let distance = 0;
             if (this.right <= moving.left) {
@@ -127,7 +137,7 @@ function createMoving(
                 distance = this.left - moving.right;
             } // else "distance" should be 0
             return distance;
-        },
+        }, // function
         // "getAverageCircleRadius": function(moving) {
         //     let averageCircleRadius = 0;
         //     if ((this.getVerticalDistanceBetween(moving) >
@@ -147,17 +157,35 @@ function createMoving(
         //         averageCircleRadius = this.height;
         //     }
         //     return averageCircleRadius;
-        // },
+        // }, // function
         // "getDistanceBetween": function(moving) {
         //     return (Math.sqrt(
         //         Math.pow(this.x() - moving.getX(), 2) +
         //         Math.pow(this.y() - moving.getY(), 2)
         //     ) - (this.getAverageCircleRadius(moving) +
         //         moving.getAverageCircleRadius(this)));
-        // },
+        // }, // function
+        "overlaps": function(moving) {
+            return (this.top > moving.top &&
+                    this.top < moving.bottom &&
+                    this.left > moving.left &&
+                    this.left < moving.right) ||
+                (this.top > moving.top &&
+                    this.top < moving.bottom &&
+                    this.right < moving.right &&
+                    this.right > moving.left) ||
+                (this.bottom > moving.top &&
+                    this.bottom < moving.bottom &&
+                    this.left > moving.left &&
+                    this.left < moving.right) ||
+                (this.bottom > moving.top &&
+                    this.bottom < moving.bottom &&
+                    this.right < moving.right &&
+                    this.right > moving.left);
+        }, // function
         "click": function(f) {
             element.addEventListener("click", f);
-        },
+        }, // function
         "act": function() {
             // Minimum value is 1px.
             let style = element.style;
@@ -165,10 +193,10 @@ function createMoving(
             let newHeight = parseInt(style.height) - xFactor;
             if (newHeight > 0) {
                 style.height = newHeight + "px";
-            }
+            } // if
             if (newWidth > 0) {
                 style.width = newWidth + "px";
-            }
-        }
-    };
-}
+            } // if
+        } // function
+    }; // return
+} // function
