@@ -10,7 +10,7 @@ for your convenience i am including below a quote from that site:
 also note that i can **add a lincese** in the near future if it would be relevant to the needs of this project.
 
 ## installation and usage
-you can play the game (or just see how the site looks and works) simply by opening the `index.html` file in your browser.
+you can play the game (or just see how the site looks and works) simply by opening the `index.html` file in your browser. if you do not want to download the sources from github, **currently** the game is published on github pages and available under the following link: https://silvuss.github.io/silvuss-jsgame-1/
 
 ## game goal and rules
 the goal of this game is to "click out" (**currently** only with mouse) all the objects moving over the board.
