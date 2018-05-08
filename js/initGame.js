@@ -102,8 +102,6 @@ function initGame(gameField, newGameButton, playPauseButton) {
             }
         });
 
-        movings[i].element.innerHTML = movings[i].id;
-
         gameField.appendChild(movings[i].element);
     }
 
