@@ -1,4 +1,4 @@
-// Returns "object".
+// returns "object".
 //  "id" is an arbitral integer (may also be 0 and less).
 //  "height" is in pixels.
 //  "width" is in pixels.
@@ -31,12 +31,13 @@ function createMoving(
     element.style.borderRadius = radius + "px";
     element.style.backgroundColor = "hsl(" + color.h + "," + color.s + "%," + color.l + "%)";
 
-    // For the explanation why there is below own implementation
+    // for the explanation why there is below own implementation
     //  of "x" and "y", see: https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect#Browser_compatibility
-    //      There are "offset*" instead of "getBoundingClientRect().*"
-    //       (offsetHeight and so on), because the latter does not work
-    //       as expected for some reason (in Firefox? At least I have
-    //       tested "getBoundingClientRect().top" as not working).
+    // 
+    // there are "offset*" instead of "getBoundingClientRect().*"
+    //  (offsetHeight and so on), because the latter does not work
+    //  as expected for some reason (in Firefox? At least I have
+    //  tested "getBoundingClientRect().top" as not working).
     return {
         get "id" () {
             return id;
@@ -187,7 +188,7 @@ function createMoving(
             element.addEventListener("click", f);
         }, // function
         "act": function() {
-            // Minimum value is 1px.
+            // minimum value is 1px.
             let style = element.style;
             let newWidth = parseInt(style.width) - xFactor;
             let newHeight = parseInt(style.height) - xFactor;

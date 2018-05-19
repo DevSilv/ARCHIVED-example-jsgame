@@ -1,13 +1,13 @@
-// Does not return.
+// does not return.
 //  "gameField" is "HTMLElement" and is being changed.
 //  "newGameButton" is "HTMLElement" and is being changed.
 //  "playPauseButton" is "HTMLElement" and is being changed.
 function initGame(gameField, newGameButton, playPauseButton) {
     "use strict";
 
-    // Initialize or re-initialize all the game parameters.
+    // initialize or re-initialize all the game parameters.
 
-    // Using "Array.from" since HTMLElement.children is a NodeList,
+    // using "Array.from" since HTMLElement.children is a "NodeList",
     //  which is not "array" and does not work for some reason.
     let gameFieldChildrenArray = Array.from(gameField.children);
     for (let child of gameFieldChildrenArray) {
@@ -23,22 +23,22 @@ function initGame(gameField, newGameButton, playPauseButton) {
     let width = document.getElementsByClassName("moving-width")[0].value;
     let radius = document.getElementsByClassName("moving-radius")[0].value;
 
-    // Initialize or re-initialize all the game objects.
+    // initialize or re-initialize all the game objects.
 
     let movings = [];
 
     for (let i = 0; i < movingsCount; ++i) {
         let id = i;
         let color = {
-            // The generated colors will be bright.
+            // the generated colors will be bright.
             h: Math.floor(Math.random() * 360),
             s: Math.floor(Math.random() * 100),
             l: Math.floor(Math.random() * 100 + 50)
         };
-        // Randomize the direction of move.
+        // randomize the direction of move.
         let verticalDirection = (Math.round(Math.random()) * 2 - 1);
         let horizontalDirection = (Math.round(Math.random()) * 2 - 1);
-        // Randomize the intervals.
+        // randomize the intervals.
         let verticalInterval = Math.floor(Math.random() * (maxVerticalInterval - minVerticalInterval + 1)) + minVerticalInterval;
         let horizontalInterval = Math.floor(Math.random() * (maxHorizontalInterval - minHorizontalInterval + 1)) + minHorizontalInterval;
 
@@ -57,7 +57,7 @@ function initGame(gameField, newGameButton, playPauseButton) {
             )
         );
 
-        // Validate if top and left do not
+        // validate if top and left do not
         //  overlap each other and the other,
         //  and then add them to element.
         let top = 0;
@@ -80,7 +80,7 @@ function initGame(gameField, newGameButton, playPauseButton) {
             }));
 
         movings[i].click(function() {
-            // Do not remove, when game is paused or not started.
+            // do not remove, when game is paused or not started.
             if (isRunning === true) {
                 movings[i].element.remove();
                 for (let m of movings) {

@@ -13,7 +13,7 @@ window.addEventListener("load", function() {
     let toggleParametersButton =
         document.getElementsByClassName("toggle-parameters-button")[0];
     let movings = [];
-    // Miliseconds. The higher value, the slower game run. The browser
+    // miliseconds. the higher value, the slower game run. the browser
     //  probably sets it as its minimum, if less than that.
     let intervalTime = 0;
 
@@ -30,14 +30,14 @@ window.addEventListener("load", function() {
 
     playPauseButton.addEventListener("click", function() {
         if (isRunning === true) {
-            // Pause the game.
+            // pause the game.
             isRunning = false;
             window.clearInterval(setIntervalId);
             playPauseButton.childNodes[0].nodeValue = "Resume";
             newGameButton.disabled = false;
             toggleParametersButton.disabled = false;
         } else {
-            // Resume or play the game the first time.
+            // resume or play the game the first time.
             let timerLabel =
                 document
                 .getElementsByClassName("game-time")[0]
