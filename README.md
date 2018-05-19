@@ -15,7 +15,7 @@ you can play the game (or just see how the site looks and works) simply by openi
 ## game goal and rules
 the goal of this game is to "click out" (**currently** only with mouse) all the objects moving over the board.
 
-you can read detailed information (e.g. how the game works and about the parameters) in the game github's wiki.
+you can read detailed information (e.g. how the game works and about the parameters) in the [game github's wiki](https://github.com/silvuss/silvuss-jsgame-1/wiki/home-%E2%80%93-silvuss-jsgame-1-wiki).
 
 ## technologies used
 **currently** the following technologies are used in this project:
