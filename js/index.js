@@ -1,8 +1,9 @@
 let isRunning = false;
 let setIntervalId = 0;
-let time = 0;
+let startTime = 0;
 
-window.addEventListener("load", function() {
+// there is a difference between "load" and "DOMContentLoaded" events.
+window.addEventListener("DOMContentLoaded", function() {
     "use strict";
 
     let gameField = document.getElementsByClassName("game-field")[0];
@@ -21,11 +22,11 @@ window.addEventListener("load", function() {
         movings = initGame(gameField, newGameButton, playPauseButton);
         playPauseButton.disabled = false;
         playPauseButton.childNodes[0].nodeValue = "Play";
-        time = 0;
+        startTime = 0;
         document
             .getElementsByClassName("game-time")[0]
             .childNodes[0]
-            .nodeValue = time;
+            .nodeValue = startTime;
     });
 
     playPauseButton.addEventListener("click", function() {

@@ -93,16 +93,18 @@ function initGame(gameField, newGameButton, playPauseButton) {
                     playPauseButton.disabled = true;
                     newGameButton.disabled = false;
                     playPauseButton.childNodes[0].nodeValue = "Play";
-                    time = 0;
+                    startTime = 0;
                     document
                         .getElementsByClassName("game-time")[0]
                         .childNodes[0]
-                        .nodeValue = time;
+                        .nodeValue = startTime;
                 }
             }
         });
 
         gameField.appendChild(movings[i].element);
+
+        startTime = performance.now();
     }
 
     return movings;

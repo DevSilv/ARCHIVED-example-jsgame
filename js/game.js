@@ -6,8 +6,6 @@ function game(gameField, movingsRef, intervalTime, timerLabel) {
     "use strict";
 
     return window.setInterval(function() {
-        ++time;
-
         let gameFieldComputedStyle =
             window.getComputedStyle(gameField);
         let gameFieldComputedHeight = parseInt(gameFieldComputedStyle.height);
@@ -54,8 +52,11 @@ function game(gameField, movingsRef, intervalTime, timerLabel) {
             }
         }
 
-        if (time % (1000 / intervalTime) === 0) {
-            timerLabel.nodeValue = time / (1000 / intervalTime);
-        }
+        let time = performance.now() - startTime;
+        console.log(time);
+        // if (time % (1000 / intervalTime) === 0) {
+            // console.log(time);
+        //     timerLabel.nodeValue = time / (1000 / intervalTime);
+        // }
     }, intervalTime);
 }
