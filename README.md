@@ -1,4 +1,4 @@
-**INFORMATION: This project ("silvuss-example-jsgame") has become discontinued as of August 27, 2019. Contributing to this project is not planned. This repository has been archived.**
+**INFORMATION: This project ("silvuss-example-jsgame") became discontinued as of August 27, 2019. Contributing to this project is not planned. This repository has been archived.**
 
 ---
 
