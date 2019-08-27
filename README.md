@@ -1,3 +1,7 @@
+**INFORMATION: This project ("silvuss-example-jsgame") has become discontinued. Contributing to this project is not planned.**
+
+---
+
 # silvuss-example-jsgame project
 
 This repository contains my third GitHub project – just a simple example browser arcade game, written mostly in JavaScript.
