@@ -1,8 +1,8 @@
-**INFORMATION: This project ("silvuss-example-jsgame") became discontinued as of August 27, 2019. Contributing to this project is not planned. This repository has been archived.**
+**INFORMATION: This project ("example-jsgame") became discontinued as of August 27, 2019. Contributing to this project is not planned. This repository has been archived.**
 
 ---
 
-# silvuss-example-jsgame project
+# example-jsgame project
 
 This repository contains my third GitHub project – just a simple example browser arcade game, written mostly in JavaScript.
 
@@ -18,7 +18,7 @@ This repository contains my third GitHub project – just a simple example brows
 
 ## Copyright note
 
-Note that this "silvuss-example-jsgame" project (this repository) has currently **no license**, as explained in [this GitHub guide on licensing projects](https://choosealicense.com/no-permission/).
+Note that this "example-jsgame" project (this repository) has currently **no license**, as explained in [this GitHub guide on licensing projects](https://choosealicense.com/no-permission/).
 
 For your convenience, I am including below a quote from that site:
 
